@@ -9,7 +9,7 @@ class UsersController < ApplicationController
             flash[:danger] = "Sign in Unsuccessful"
             redirect_to root_path
         end
-      end
+     end
     
     
     private

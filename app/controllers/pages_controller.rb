@@ -5,5 +5,6 @@ class PagesController < ApplicationController
 
   def leaderboard
     @user = User.new
+    @users = User.all.order('points DESC')
   end
 end
