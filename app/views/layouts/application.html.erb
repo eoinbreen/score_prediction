@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= yield(:title) %> | Sportego Score Prediction</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  
+  <%= csrf_meta_tags %>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+    </script>
+  <![endif]-->
+</head>
+<body>
+  <header class="navbar navbar-fixed-top navbar-inverse">
+    <div class="container">
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "Game",   root_path %></li>
+          <li><%= link_to "Leaderboard",   leaderboard_path %></li>
+          <li><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Sign in/ Sign up</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  
+  <!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form">
+        <%= form_for @user do |f| %>
+           <%= render 'shared/error_messages' %>
+         
+          <%= f.text_field :name, :placeholder => "Name", class: 'form-control' %>
+          
+         
+          <%= f.email_field :email, :placeholder => "Email", class: 'form-control' %>
+          
+          <%= f.password_field :password , :placeholder => "Password (6-20 Characters)", class: 'form-control' %>
+         
+          <%= f.password_field :password_confirmation , :placeholder => "Password Confirmation", class: 'form-control' %>
+         
+          <br>
+          <%= f.label :country, class: 'label-style' %>
+          <%= f.collection_select :country, User::COUNTRIES, :to_s, :to_s, :include_blank => true%>
+          
+          <br>
+          <%= f.submit "Create my account", class: "btn btn-primary" %>
+        <% end %>
+      
+      </div>
+      </div>
+     
+    </div>
+  </div>
+</div>
+  
+  
+  
+  <div class="container">
+    <%= yield %>
+  </div>
+
+</body>
+</html>
