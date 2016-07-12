@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   def game
     @user = User.new
+    @predictions = Prediction.new
   end
 
   def leaderboard

@@ -1,3 +1,24 @@
 <% provide(:title, 'Game') %>
 <h1>Game</h1>
 
+<div class="form">
+        <%= form_for @predictions do |f| %>
+           <%= render 'shared/error_messages' %>
+          
+         <div class = "row">
+             <section class="col-sm-4">
+          <%= f.number_field :teamScore1, :placeholder => "-", min: 0,max:99, class: 'form-control' %> 
+              </section>
+              <section class="col-sm-4">
+              <p>V</p>
+              </section>
+              <section class="col-sm-4">
+          <%= f.number_field :teamScore2, :placeholder => "-", min: 0,max:99, class: 'form-control' %>
+              </section>
+          <%= f.text_field :firstScorer , :placeholder => "-", class: 'form-control' %>
+         </div>
+          <br>
+
+          <%= f.submit "Make Prediction", class: "btn btn-primary" %>
+        <% end %>
+      </div>

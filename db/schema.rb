@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160707130436) do
+ActiveRecord::Schema.define(version: 20160708104444) do
+
+  create_table "predictions", force: :cascade do |t|
+    t.string   "firstScorer"
+    t.string   "predMaker"
+    t.integer  "teamScore1"
+    t.integer  "teamScore2"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
