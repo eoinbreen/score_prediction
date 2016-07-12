@@ -3,6 +3,11 @@ Rails.application.routes.draw do
 
   get 'leaderboard' => 'pages#leaderboard'
   
+  post   '/leaderboard',  to: 'sessions#create'
+  post   '/',  to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
+  
+  
   resources :users, :predictions
 
   # The priority is based upon order of creation: first created -> highest priority.
