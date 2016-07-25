@@ -1,5 +1,6 @@
 <% provide(:title, 'Game') %>
 <h1>Game</h1>
+<% currentPlayer="None" %>
 
 <div class="form">
         <%= form_for @predictions do |f| %>
@@ -15,10 +16,74 @@
               <section class="col-sm-4">
           <%= f.number_field :teamScore2, :placeholder => "-", min: 0,max:99, class: 'form-control' %>
               </section>
-          <%= f.text_field :firstScorer , :placeholder => "-", class: 'form-control' %>
+              
+              <br>
+              <h3>First Scorer</h3>
+              <!-- Modal -->
+<div class="modal fade" id="scoreModal" tabindex="-1" role="dialog" aria-labelledby="scorer" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="scorer">Players</h4>
+      </div>
+      <div class="modal-body">
+        <!--  Player scroll Box  -->
+          <ul class="nav nav-pills">
+            <li class="active"><a data-toggle="pill" href="#team1">Team 1</a></li>
+            <li><a data-toggle="pill" href="#team2">Team 2</a></li>
+          </ul>
+          
+          <div class="tab-content">
+            <div id="team1" class="tab-pane fade in active">
+            
+              <div class="player_scroll_box">
+                <h2>Team 1</h2>
+                <ol>
+                  <%for i in 1..11%>
+                   <center><%= radio_button_tag(:playerButton, @players.find(i).name) %> <%=@players.find(i).name%></center><br>
+                  
+                  <%end%>
+                </ol>
+              
+              </div>
+            </div>
+            
+            <div id="team2" class="tab-pane fade">
+              <div class="player_scroll_box">
+                <h2>Team 2</h2>
+                
+                  <%for i in 12..22%>
+                   <center><%= radio_button_tag(:playerButton, @players.find(i).name) %> <%=@players.find(i).name%></center><br>
+                  
+                  <%end%>
+                
+              
+              </div>
+            
+            </div>
+          </div>
+        
+      
+      </div>
+      <div class="modal-footer">
+        <center> <button onclick = "pick_player()" data-dismiss="modal">Pick Player</button></center> 
+      </div>
+      </div>
+     
+    </div>
+  </div>
+
+          <%= f.text_field :firstScorer , :value => currentPlayer, :id => 'player_field', class: 'form-control', :readonly => true %>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#scoreModal">Choose Player</button>
          </div>
           <br>
-
-          <%= f.submit "Make Prediction", class: "btn btn-primary" %>
+         
+          <%= f.submit "Make Prediction", class: "btn btn-primary btn-lg" %>
+          
         <% end %>
+        <br>
+        
       </div>

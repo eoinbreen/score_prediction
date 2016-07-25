@@ -68,6 +68,10 @@ p {
 
 //forms
 
+#radio_button{
+//float: left;
+}
+
 .form {
   text-align:center;
   color:black;
@@ -82,7 +86,7 @@ input[type=email],
 input[type=password] {
   color: #666666;
   width: 100%;
-  border: 1px solid #ffffff;
+  border: 1px solid black;
   border-radius: 0px; 
   height: 40px;
   margin: 6px auto;
@@ -102,4 +106,18 @@ input[type=password] {
   .form-control {
     color: $state-danger-text;
   }
+}
+
+.checkbox {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
 }

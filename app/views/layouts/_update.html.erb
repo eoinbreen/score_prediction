@@ -1,0 +1,35 @@
+<!-- Modal -->
+ <div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                <% if logged_in? %>
+                  <h1 class="modal-title" id="myModalLabel">Update Profile</h1>
+                  <div class="form">
+                    <%= form_for @currentUser do |f| %>
+                       <%= render 'shared/error_messages' %>
+                     
+                      <%= f.text_field :name, :placeholder => "Name", class: 'form-control' %>
+                      
+                     
+                      <%= f.email_field :email, :placeholder => "Email", class: 'form-control' %>
+                      
+                      <%= f.password_field :password , :placeholder => "Password (6-20 Characters)", class: 'form-control' %>
+                     
+                      <%= f.password_field :password_confirmation , :placeholder => "Password Confirmation", class: 'form-control' %>
+                     
+                      <br>
+                      <%= f.label :country, class: 'label-style' %>
+                      <%= f.collection_select :country, User::COUNTRIES, :to_s, :to_s, :include_blank => true%>
+                      
+                      <br>
+                      <%= f.submit "Update Profile", class: "btn btn-primary btn-lg" %>
+                    <% end %>
+          
+                  </div>
+                <% end %>
+      </div>
+    </div>
+  </div>

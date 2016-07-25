@@ -6,6 +6,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email
       t.string :country
       t.integer :points
+     
       
 
       t.timestamps null: false

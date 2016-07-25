@@ -31,7 +31,7 @@
                   <%= f.collection_select :country, User::COUNTRIES, :to_s, :to_s, :include_blank => true%>
                   
                   <br>
-                  <%= f.submit "Create my account", class: "btn btn-primary" %>
+                  <%= f.submit "Create my account", class: "btn btn-primary btn-lg" %>
                 <% end %>
       
               </div>
@@ -47,8 +47,14 @@
                   <%= f.email_field :email, :placeholder => "Email", class: 'form-control' %>
                   
                   <%= f.password_field :password , :placeholder => "Password (6-20 Characters)", class: 'form-control' %>
+                  
+                  <br>
+                  <%= f.label :remember_me, class: "checkbox inline" do %>
+                    <%= f.check_box :remember_me %>
+                    <span>Remember me on this computer</span>
+                  <% end %>
                  
-                  <%= f.submit "Sign in", class: "btn btn-primary" %>
+                  <%= f.submit "Sign in", class: "btn btn-primary btn-lg" %>
                 <% end %>
       
               </div>

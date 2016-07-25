@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  root 'pages#game'
+  root 'pages#home'
 
+  get 'game' => 'pages#game'
   get 'leaderboard' => 'pages#leaderboard'
   
   post   '/leaderboard',  to: 'sessions#create'

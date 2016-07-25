@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160708104444) do
+ActiveRecord::Schema.define(version: 20160718110913) do
+
+  create_table "players", force: :cascade do |t|
+    t.string   "name"
+    t.string   "teamId"
+    t.string   "position"
+    t.integer  "playChance"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "predictions", force: :cascade do |t|
     t.string   "firstScorer"
@@ -27,9 +36,11 @@ ActiveRecord::Schema.define(version: 20160708104444) do
     t.string   "email"
     t.string   "country"
     t.integer  "points"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "password_digest"
+    t.string   "remember_digest"
+    t.boolean  "admin",           default: false
   end
 
 end

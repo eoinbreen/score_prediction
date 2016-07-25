@@ -5,3 +5,15 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+99.times do |n|
+  name  = Faker::Name.name
+  teamId = "example-#{n+1}@railstutorial.org"
+  position = "GW"
+  playChance = 100
+    
+  Player.create!(name:  name,
+               teamId: teamId,
+               position: position,
+               playChance: playChance,
+               )
+end
